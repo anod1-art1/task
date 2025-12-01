@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add New Task</title>
+  <style>
+    :root {
+      --green: #90CF8E;
+      --light: #EFFDEE;
+      --gray: #f3f4f6;
+      --dark: #1f2937;
+      --accent: #A7DCA5;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #ffffff;
+      color: var(--dark);
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    .form-card {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(144, 207, 142, 0.15);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid var(--gray);
+      border-radius: 8px;
+      font-size: 1rem;
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: var(--green);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #7bbf7a;
+    }
+
+    .success {
+      text-align: center;
+      color: green;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Add New Task</h1>
+
+  <div class="form-card">
+    <form id="taskForm">
+      <div class="form-group">
+        <label for="title">Task Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter task title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Describe the task..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="e.g. Math, Programming" />
+      </div>
+
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type" name="type">
+          <option value="assignment">Assignment</option>
+          <option value="project">Project</option>
+          <option value="exam">Exam</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Due Date</label>
+        <input type="date" id="date" name="date" required />
+      </div>
+
+      <div class="form-group">
+        <label for="time">Due Time</label>
+        <input type="time" id="time" name="time" required />
+      </div>
+
+      <button type="submit">Save Task</button>
+    </form>
+
+    <div class="success" id="successMessage" style="display: none;">
+      ✅ Task saved successfully!
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("taskForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("successMessage").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("taskForm").reset();
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
